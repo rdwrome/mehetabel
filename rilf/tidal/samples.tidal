@@ -1,0 +1,63 @@
+-- noise
+d8
+  $ spin 3
+  $ loopAt 8
+  $ s "gb"
+    # gain 0.8
+    -- # silence
+
+hush
+
+d8 -- pulsed holly
+$ rarely (hurry 2)
+  $ s "scarlett"
+  # legato 1
+  # room 0.2 # size 0.6
+  # pan rand
+  # gain (range 0.4 0.8 sine)
+  # silence
+
+once $ s "type" # gain 0.8--type, scarlett
+
+d9 --cherilyn, donna, ann
+-- $ degradeBy 0.3
+  $ euclid 3 8
+  $ rarely (slow 2)
+  $ randslice 16
+  $ s "donna"
+  # legato 1
+  # room 0.2 # size 0.6
+  # gain (range 0.4 0.8 sine)
+  # pan rand
+  -- silence
+
+  xfade 9
+  -- $ degradeBy 0.3
+    $ euclid 5 8
+    $ rarely (slow 2)
+    $ randslice 16
+    $ s "fedha"
+    # legato 1
+    # room 0.2 # size 0.6
+    # pan rand
+    -- # silence
+
+xfade 9
+  $ degradeBy 0.1
+  $ chunk' 3 (slow 2)
+  $ n ("[1 ~ 2 2 ~]" |+ irand 2)
+    # s "monica"
+    # pan rand
+    # silence
+
+xfade 9
+  $ degradeBy 0.3
+  $ chunk' 3 (slow 2)
+  $ n ("5 ~ 2 [3 2] ~ 4" |+ irand 6)
+    # s "samantha"
+    # djf sine
+    -- # silence
+
+hush
+
+ann, cherilyn, donna, fedha, gb, monica, samantha, scarlett, type
