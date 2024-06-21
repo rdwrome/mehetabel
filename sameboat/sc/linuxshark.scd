@@ -34,7 +34,7 @@ a.free;
 
 //shark01:9; shark02:4; shark03:1; sr01:6
 
-b = Buffer.read(s,thisProcess.nowExecutingPath.dirname++"/shark02.wav");
+b = Buffer.read(s, '/home/rd/Desktop/giants/friendlysolstice.wav');
 
 (
 Ndef(\verb, {
