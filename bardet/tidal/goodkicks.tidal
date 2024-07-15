@@ -1,9 +1,10 @@
 setcps (140/60/4)
 -- 90, 120, 80, 140
--- 909, reverbkick, gabba, print
+-- 909, reverbkick, gabba (4), print (11), invaders (18)
+-- 909kit:01 909kit:11
 
 xfade 1
-  $ stitch "t(<5 7>,8)" (s "909") (s "reverbkick")
+  $ stitch "t(<5 7>,8)" (s "909:01") (s "reverbkick")
     # djf isaw
     # pan rand
     # gain 0.8
@@ -44,7 +45,7 @@ $ s "print" # n (irand 11)
 hush
 
 xfade 4
-  $ "gabba:3*16?"
+  $ "invaders*16?"
     # speed "[0.25|0.5|2]"
     # djf sine
     # pan rand
