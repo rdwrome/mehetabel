@@ -1,8 +1,8 @@
-setcps (90/60/4)
+setcps (140/60/4)
 -- 90, 120, 80, 140
 -- 909, reverbkick, gabba, print
 
-xfade 4
+xfade 1
   $ stitch "t(<5 7>,8)" (s "909") (s "reverbkick")
     # djf isaw
     # pan rand
@@ -35,15 +35,15 @@ $ s "print" # n (irand 11)
 
 hush
 
-xfade 5
+xfade 4
   $ "gabba:3*16?"
     # speed "[0.25|0.5|2]"
     # djf sine
     # pan rand
-    # gain 0.6
-    # silence
+    -- # gain 0.6
+    -- # silence
 
 xfade 4
-  $ "reverbkick*4"
+  $ "909*4"
     # shape (slow 2 (range 0.4 0.8 isaw))
     # legato 1

@@ -2,8 +2,8 @@
 d7-- $ spin 3
   $ loopAt 8
   $ s "ships"
-    # gain 1.4
-    -- # silence
+    # gain 1.0
+    # silence
 
 hush
 
@@ -28,7 +28,7 @@ d9
   $ s "donna"
   # legato 1
   # room 0.2 # size 0.6
-  # gain (range 0.4 0.8 sine)
+  -- # gain (range 0.4 0.8 sine)
   # pan rand
   -- silence
 
@@ -37,11 +37,11 @@ d9
     $ euclid 5 8
     $ rarely (slow 2)
     $ randslice 16
-    $ s "ships:1"
+    $ s "donna"
     # legato 1
     # room 0.2 # size 0.6
     # pan rand
-    # silence
+    -- # silence
 
 xfade 9
   $ degradeBy 0.1
