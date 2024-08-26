@@ -1,0 +1,29 @@
+
+d6
+$ often (slow "<8 16 32>")
+$ struct "t(3,8)"
+$ segment 16
+$ n (scale "harrison" $ floor <$> (range "<-6 4>" "<2 18>" sine))
+    # s "cyclo"
+    # legato 1
+    # gain (range 0.4 0.8 sine)
+    # pan rand
+    # silence
+
+hush
+
+scaleList
+
+d7 --
+$ degradeBy 0.8
+$ often (slow "<8 16 32>")
+$ rolledBy sine
+$ n "c'maj'o"
+  # sound "cyclo"
+  # legato 1
+  # gain (range 0.4 0.8 sine)
+  # pan rand
+  # silence
+
+import Sound.Tidal.Chords
+chordList

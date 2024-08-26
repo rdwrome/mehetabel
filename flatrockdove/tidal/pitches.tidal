@@ -12,17 +12,3 @@ $ n (scale "phrygian" "-12 .. 12" |+ "[a3 |a4 |a5 |a6]")
 hush
 
 scaleList
-
-d7 --
-$ degradeBy 0.8
-$ often (slow "<8 16 32>")
-$ rolledBy sine
-$ n "<[a'min g'maj f'maj e'maj] [d'min d'maj e'min b'min c'maj]>"
-  # sound "gabor"
-  # legato 1
-  # gain (range 0.4 0.8 sine)
-  # pan rand
-  -- # silence
-
-import Sound.Tidal.Chords
-chordList
