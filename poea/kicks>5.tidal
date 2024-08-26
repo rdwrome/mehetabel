@@ -33,7 +33,7 @@ $ s "invaders" # n (irand 18)
   # gain (range 0.6 0.9 saw)
   -- # silence
 
-xfade 3
+xfade 5
 $ stitch "t(<5 7>,16)" (s "909kit:1") (s "reverbkick")
         # djf isaw
         # pan rand
@@ -62,6 +62,7 @@ xfade 3
   $ "msf:01*4"
     # shape (slow 2 (range 0.4 0.8 isaw))
     # legato 1
+    # silence
 
 
 xfade 3 $ stack[

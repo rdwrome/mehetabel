@@ -16,7 +16,6 @@ $ rarely (hurry 2)
   # pan rand
   # gain (range 0.4 0.8 sine)
 
-
 once $ s "poea:01" # gain 1.6
 
 xfade 9 --donna, ann
