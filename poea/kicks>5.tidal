@@ -1,0 +1,75 @@
+setcps (140/60/4)
+-- 90, 120, 80, 140
+-- 909, reverbkick, gabba (4), print (11), invaders (18)
+-- 909kit:01 909kit:11
+
+
+xfade 1
+  $ stitch "t(<5 7>,8)" (s "909:01") (s "reverbkick")
+    # djf isaw
+    # pan rand
+    # gain 0.8
+
+xfade 1
+  $ stitch "t(5,8)" (s "gabba:4") (s "gabba:2")
+    # shape (slow 2 saw)
+    # djf isaw
+    # pan rand
+    # gain (range 0.6 0.9 saw)
+
+
+xfade 1
+$ s "{print:5 gabba:5 print:2 gabba:6 print:4}%8"
+  # shape (slow 2 saw)
+  # djf isaw
+  # pan rand
+  -- # silence
+
+xfade 1
+$ distrib ["<3 5>", 8, "<1 3>"]
+$ s "invaders" # n (irand 18)
+  # djf isaw
+  # pan rand
+  # gain (range 0.6 0.9 saw)
+  -- # silence
+
+xfade 3
+$ stitch "t(<5 7>,16)" (s "909kit:1") (s "reverbkick")
+        # djf isaw
+        # pan rand
+        # gain 0.8
+        -- # silence
+
+hush
+
+xfade 4
+  $ degradeBy 0.8
+  $ "invaders:7*16?"
+    # speed "[0.25|0.5|2]"
+    # djf sine
+    # pan rand
+    # silence
+
+xfade 5
+  $ "msf:02*16?"
+    # speed "[0.25|0.5|2]"
+    # djf sine
+    # pan rand
+    # gain 1.2
+    -- # silence
+
+xfade 3
+  $ "msf:01*4"
+    # shape (slow 2 (range 0.4 0.8 isaw))
+    # legato 1
+
+
+xfade 3 $ stack[
+  s "[msf:03 ~ msf:03 ~] [~ ~ msf:03 ~] [msf:03 ~ msf:03 ~] [~ ~ msf:03 ~] ",
+  s "[~ ~ ~ ~] [invaders:7 ~ ~ ~] [~ ~ invaders ~] [~ ~ ~ ~] ",
+  s "[~ ~ ~ ~] [invaders:3 ~ ~ ~] [~ ~ ~ ~] [invaders:4 ~ ~ ~] ",
+  s "[~ ~ ~ ~] [reverbkick ~ ~ ~] [~ ~ ~ ~] [reverbkick ~ ~ ~] ",
+  s "[909kit:11 ~ ~ ~] [909kit:11 ~ ~ ~] [909kit:11 ~ ~ ~] [909kit:11 ~ ~ ~] "
+    ] -- # shape (slow 2 (range 0.4 0.8 isaw))
+      # legato 1
+      # gain 0.6

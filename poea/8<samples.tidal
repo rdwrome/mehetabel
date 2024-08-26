@@ -4,27 +4,27 @@ d8
   $ loopAt 8
   $ s "gb"
     # gain 0.8
-    # silence
+    -- # silence
 
 hush
 
-d8 -- pulsed holly
+d8
 $ rarely (hurry 2)
-  $ s "poea:1"
+  $ s "scarlett"
   # legato 1
   # room 0.2 # size 0.6
   # pan rand
   # gain (range 0.4 0.8 sine)
 
 
-once $ s "poea:02" # gain 0.8--type, scarlett
+once $ s "poea:01" # gain 1.6
 
-xfade 9 --cherilyn, donna, ann
+xfade 9 --donna, ann
 -- $ degradeBy 0.3
   $ euclid 3 8
   $ rarely (slow 2)
   $ randslice 16
-  $ s "poea:01"
+  $ s "ann"
   # legato 1
   # room 0.2 # size 0.6
   # gain 0.9

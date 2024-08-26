@@ -4,7 +4,7 @@ setcps (140/60/4)
 -- 909kit:01 909kit:11
 
 xfade 1
-  $ stitch "t(<5 7>,8)" (s "909:01") (s "reverbkick")
+  $ stitch "t(<5 7>,8)" (s "909:11") (s "reverbkick")
     # djf isaw
     # pan rand
     # gain 0.8
