@@ -39,7 +39,7 @@ h.free;
 i.free;
 )
 
-(
+( ~sid =
 SynthDef(\sid6581f, {|out= 0, gate= 1, freqLo= 0, freqHi= 0, pwLo= 0, pwHi= 0, ctrl= 65, atkDcy= 5, susRel= 5, fcLo= 0, fcHi= 0, res= 0, mode= 15, rate= 1, amp= 1, pan= 0|
     var e, z;
     e= EnvGen.kr(Env.asr(0.01, amp, 0.05), gate, doneAction:2);
@@ -51,15 +51,15 @@ SynthDef(\sid6581f, {|out= 0, gate= 1, freqLo= 0, freqHi= 0, pwLo= 0, pwHi= 0, c
         fcLo, fcHi,
         res, mode, rate
     );
-    Out.ar(out, Pan2.ar(z*e, pan));
+    Out.ar(out, PanAz.ar(2, z*e, pan)); /// NUMBER OF CHANNELS HERE, RACHEL!
 }).add;
 );
-(
+( ~pokey =
 SynthDef(\pokeySquare, {|out= 0, gate= 1, f1= 0, c1= 0, v1= 15, f2= 0, c2= 0, v2= 15, f3= 0, c3= 0, v3= 15, f4= 0, c4= 0, v4= 15, ctl= 0, amp= 1, pan= 0|
     var e, z;
     e= EnvGen.kr(Env.asr(0.01, amp, 0.05), gate, doneAction:2);
     z= PokeySquare.ar(f1, c1, v1, f2, c2, v2, f3, c3, v3, f4, c4, v4, ctl);
-    Out.ar(out, Pan2.ar(z*e, pan));
+    Out.ar(out, PanAz.ar(2, z*e, pan)); /// NUMBER OF CHANNELS HERE, RACHEL!
 }).add;
 );
 (
@@ -67,9 +67,14 @@ SynthDef(\ay8910square, {|out= 0, gate= 1, freq= 100, noise= 15, ctrl= 0, vol= 1
     var e, z;
     e= EnvGen.kr(Env.asr(0.01, amp, 0.05), gate, doneAction:2);
     z= AY8910Square.ar(freq, noise, ctrl, vol, envRate, envShape, rate)[0];
-    Out.ar(out, Pan2.ar(z*e, pan));
+    Out.ar(out, PanAz.ar(2, z*e, pan)); /// NUMBER OF CHANNELS HERE, RACHEL!
 }).add;
 )
+
+(i ={SN76489.ar(MouseX.kr(0, 1023), SinOsc.kr([0.35, 0.45], 0, 7.5, 7.5), 100, MouseY.kr(0, 7).round-[0, 7], SinOsc.kr(0.3, 0, 5.5, 5.5), 5, 2, 3)}.play);
+i.free;
+
+~sid.play;
 
 //trashcan beat
 ( c =
@@ -77,7 +82,7 @@ Pbind(
     \instrument, \sid6581f,
     \dur, Pseq([0.1, 0.15], inf),
     \amp, Pseq([0.5, 0.25], inf),
-    \ctrl, 2r10000001,
+    \ctrl, Pseq([2r10000001, 2r00110101, 2r00010101], inf),
     \freqHi, Pseq([0, 24, 24, Pwrand([200, 230], [0.6, 0.4])], inf)
 ).play
 )
@@ -88,7 +93,7 @@ c.stop;
 Pbind(
     \instrument, \sid6581f,
     \dur, Pseq([0.03, 0.02], inf),
-    \ctrl, Pseq([2r00110101, 2r00010101], inf),
+    \ctrl, Pseq([2r10000001, 2r00110101, 2r00010101], inf),
     \amp, Pseq([1, 0.5], inf),
     \pwHi, Pn(Pseries(0, 0.01, 25400), inf),
     \atkDcy, Pn(Pseries(0, 0.005, 51000), inf),
@@ -155,7 +160,8 @@ g.stop;
 
 //babbling R2D2
 (
-h = {	|period=0|
+~r2d2 =
+SynthDef(\r2d2,{|period=0|
 	var change, rate, sig, carrierFreq, cfRamp, carrierLvl, clRamp,
 	modulatorRatio, mrRamp, modulatorIndex, miRamp, outputAmplitude, oaRamp;
 
@@ -190,21 +196,5 @@ h = {	|period=0|
 	sig = (sig - OnePole.ar(sig, exp(-2pi * (100 * SampleDur.ir))));
 	sig = (sig - OnePole.ar(sig, exp(-2pi * (100 * SampleDur.ir))));
 	sig = sig!2 * 0.12;
-}.play;
-)
-h.free;
-
-// n76489 MOUSEY GOODNESS IN ITS OWN PLAY FUNCTION
-
-(i ={SN76489.ar(MouseX.kr(0, 1023), SinOsc.kr([0.35, 0.45], 0, 7.5, 7.5), 100, MouseY.kr(0, 7).round-[0, 7], SinOsc.kr(0.3, 0, 5.5, 5.5), 5, 2, 3)}.play);
-i.free;
-
-(
-c.stop;
-d.stop;
-e.stop;
-f.stop;
-g.stop;
-h.free;
-i.free;
-)
+}.add;
+))
