@@ -3,6 +3,8 @@
 MIDIClient.init;
 ~midiOut = MIDIOut.newByName("Scarlett 8i6 USB", "Scarlett 8i6 USB");
 
+///as many analog outs as my interface...
+
 (
 s.options.numBuffers = 1024 * 256;
 s.options.memSize = 8192 * 32;
