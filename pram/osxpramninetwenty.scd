@@ -15,7 +15,7 @@ s.options.numInputBusChannels = 2;
 s.waitForBoot {
     ~dirt = SuperDirt(2, s); // total number of output channels
 	~dirt.loadSoundFiles;
-    ~dirt.loadSoundFiles("/Users/rrome/Documents/GitHub/solo/Dirt/samples/**");
+    ~dirt.loadSoundFiles("/Users/rrome/Documents/GitHub/mehetabel/Dirt/samples**");
 	~dirt.soundLibrary.addMIDI(\mydevice, ~midiOut);
     s.sync;
     ~dirt.start(57120, 0 ! 12);
@@ -36,7 +36,7 @@ SynthDef(\ay8910square, {|out= 0, gate= 1, freq= 100, noise= 15, ctrl= 0, vol= 1
     var e, z;
     e= EnvGen.kr(Env.asr(0.01, amp, 0.05), gate, doneAction:2);
     z= AY8910Square.ar(freq, noise, ctrl, vol, envRate, envShape, rate)[0];
-    Out.ar(out, PanAz.ar(2, z*e, pan));
+    Out.ar(out, PanAz.ar(2, z*e, pan)); ///NUMBER OF CHANNELS HERE, RACHEL
 }).add;
 )
 

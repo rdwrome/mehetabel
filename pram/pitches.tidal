@@ -1,31 +1,33 @@
 
 -- cyclo, gabor, imp
+
 d6
 $ often (slow "<8 16 32>")
 $ struct "t(3,8)"
 $ segment 16
-$ n (scale "harrison" $ floor <$> (range 0 "<2 4>" sine))
-    # s "cyclo"
+$ n (scale "harrison" $ floor <$> (range "<-6 4>" "<2 18>" sine))
+    # s "gabor"
     # legato 1
     # gain (range 0.4 0.8 sine)
     # pan rand
+    -- # silence
 
 hush
 
 scaleList
 
-d7
-$ degradeBy 0.8
+d7 --
+$ degradeBy 0.2
 $ often (slow "<8 16 32>")
 $ rolledBy sine
-$ n "c'major'o"
+$ n "c'maj'o"
   # sound "gabor"
   # legato 1
   # gain (range 0.4 0.8 sine)
   # pan rand
-  # silence
-
-unmute 7
+  -- # silence
 
 import Sound.Tidal.Chords
 chordList
+
+hush
