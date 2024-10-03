@@ -1,9 +1,9 @@
 -- noise
 d8
   $ spin 3
-  $ loopAt 8
-  $ s "gb"
-    # gain 0.8
+  -- $ loopAt 8
+  $ s "909"
+    -- # gain 0.8
     -- # silence
 
 hush

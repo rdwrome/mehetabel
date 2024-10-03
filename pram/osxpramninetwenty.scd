@@ -1,24 +1,24 @@
 //dependencies: redFrik extensions
-
+s.meter
 MIDIClient.init;
-~midiOut = MIDIOut.newByName("Scarlett 8i6 USB", "Scarlett 8i6 USB");
+~midiOut = MIDIOut.newByName("Scarlett 18i20 USB", "Scarlett 18i20 USB");
 
-///as many analog outs as my interface...
+///as many analog outs as interface PLUS ONE!!!
 
 (
 s.options.numBuffers = 1024 * 256;
 s.options.memSize = 8192 * 32;
 s.options.maxNodes = 1024 * 32;
-s.options.numOutputBusChannels = 2; // total number of output channels
-s.options.numInputBusChannels = 2;
+s.options.numOutputBusChannels = 9; // total number of output channels
+s.options.numInputBusChannels = 9;
 
 s.waitForBoot {
-    ~dirt = SuperDirt(2, s); // total number of output channels
+    ~dirt = SuperDirt(9, s); // total number of output channels
 	~dirt.loadSoundFiles;
     ~dirt.loadSoundFiles("/Users/rrome/Documents/GitHub/mehetabel/Dirt/samples**");
 	~dirt.soundLibrary.addMIDI(\mydevice, ~midiOut);
     s.sync;
-    ~dirt.start(57120, 0 ! 12);
+    ~dirt.start(57120, 0 ! 16);
 };
 );
 
@@ -36,7 +36,7 @@ SynthDef(\ay8910square, {|out= 0, gate= 1, freq= 100, noise= 15, ctrl= 0, vol= 1
     var e, z;
     e= EnvGen.kr(Env.asr(0.01, amp, 0.05), gate, doneAction:2);
     z= AY8910Square.ar(freq, noise, ctrl, vol, envRate, envShape, rate)[0];
-    Out.ar(out, PanAz.ar(2, z*e, pan)); ///NUMBER OF CHANNELS HERE, RACHEL
+    Out.ar(out, PanAz.ar(9, z*e, pan)); ///NUMBER OF CHANNELS HERE, RACHEL
 }).add;
 )
 
@@ -50,7 +50,7 @@ Pbind(
     \vol, Pseq([15, 15, 0, 0, 15, 0, 15, 0, 8, 8, 0, 0, 8, 0, 0, 15], inf),
     \envRate, Pseq([Pn(0, 32), Pn(255, 64), Pseq([0, 255, 255, 0, 25, 255, 0, 25, Pseries(8, -1, 8)], inf)]),
     \ctrl, Pseq([Pn(2, 12), Pn(6, 6), Pn(2, 4)], inf),
-	\pan, Pxrand([0, 0.25, 0.5, 0.75, 1], inf)
+	\pan, Pxrand([0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1], inf)
 ).play
 )
 ~cpo.stop;
@@ -92,8 +92,7 @@ w = {	|period=0|
 	sig = (sig - OnePole.ar(sig, exp(-2pi * (100 * SampleDur.ir))));
 	sig = (sig - OnePole.ar(sig, exp(-2pi * (100 * SampleDur.ir))));
 	sig = sig!2 * 0.06;
-
-	Out.ar(0, PanAz.ar(2, sig, SinOsc.kr(4))) ///// NUMBER OF CHANNELS HERE, RACHEL
+	Out.ar(0, Mix.ar(PanAz.ar(9, sig))); /// NUM OF CHANNELS RACHEL
 }.play;
 )
 

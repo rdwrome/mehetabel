@@ -5,7 +5,7 @@ xfade 5
     # speed "[0.25|0.5|2]"
     # djf sine
     # pan rand
-    # gain 0.6
+    -- # gain 0.6
 
 xfade 4
   $ "reverbkick*4"
@@ -18,9 +18,9 @@ setcps (140/60/4)
   -- 909kit:01 909kit:11
 
 xfade 1
-  $ stitch "t(<5 7>,8)" (s "909kit:01") (s "reverbkick")
+  $ stitch "t(<5 7>,8)" (s "909") (s "reverbkick")
     # djf isaw
-    # pan rand
+    # pan sine
     # gain 0.8
 
 xfade 1
