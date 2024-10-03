@@ -15,7 +15,7 @@ s.options.numInputBusChannels = 9;
 s.waitForBoot {
     ~dirt = SuperDirt(9, s); // total number of output channels
 	~dirt.loadSoundFiles;
-    ~dirt.loadSoundFiles("/Users/rrome/Documents/GitHub/mehetabel/Dirt/samples**");
+    ~dirt.loadSoundFiles("/Users/rrome/Documents/GitHub/mehetabel/Dirt/samples/**");
 	~dirt.soundLibrary.addMIDI(\mydevice, ~midiOut);
     s.sync;
     ~dirt.start(57120, 0 ! 16);
