@@ -92,7 +92,7 @@ w = {	|period=0|
 	sig = (sig - OnePole.ar(sig, exp(-2pi * (100 * SampleDur.ir))));
 	sig = (sig - OnePole.ar(sig, exp(-2pi * (100 * SampleDur.ir))));
 	sig = sig!2 * 0.06;
-	Out.ar(0, Mix.ar(PanAz.ar(9, sig))); /// NUM OF CHANNELS RACHEL
+	Out.ar(0, PanAz.ar(9, sig)); /// NUM OF CHANNELS RACHEL
 }.play;
 )
 

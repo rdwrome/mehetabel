@@ -11,7 +11,7 @@ SynthDef(\mzpokey, {|out= 0, gate= 1, f1= 0, c1= 0, f2= 0, c2= 0, f3= 0, c3= 0, 
 Pbind(
     \instrument, \mzpokey,
     \dur, 0.125,
-    \amp, 0.8,
+    \amp, 1.4,
     \ctl, Pseq([2r10000001, 2r01000001, 2r00100000], inf),
     \f1, Pseq([Pn(88, 8), Pseq([120, 130, 140, 50], 4)], inf)+Pseq([Pn(0, 72), Pn(-10, 36)], inf),
     \c1, 2r10101111,
@@ -26,7 +26,7 @@ Pbind(
 Pbind(
     \instrument, \mzpokey,
     \dur, 0.1,
-    \amp, 0.8,
+    \amp, 1.2,
     \legato, 1.25,
     \ctl, 2r10000000,
     \f1, Pseq([5, 6, 5, 6, 5, 6, 5, 6, 5, 6, 5, 6, 140, 6, 5, 6], inf),

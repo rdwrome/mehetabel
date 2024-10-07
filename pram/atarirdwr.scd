@@ -6,7 +6,7 @@ SynthDef(\atari2600, {|out= 0, gate= 1, tone0= 5, tone1= 8, freq0= 10, freq1= 20
     Out.ar(out, PanAz.ar(9, z*e, pan)); ///NUMBER OF CHANNELS HERE, RACHEL
 }).add;
 )
-
+s.meter;
 ( ~cyborgtrash =
 Pbind(
     \instrument, \atari2600,
@@ -27,7 +27,7 @@ Pbind(
 Pbind(
     \instrument, \atari2600,
     \dur, Pseq([0.06, 0.04], inf),
-    \amp, 0.8,
+    \amp, 1.2,
     \tone0, Pseq([10, 10, 10, 3], inf),
     \tone1, Pseq([3, 3, 3, 3, 10], inf),
     \freq0, Pseq([1, 2, 3], inf),

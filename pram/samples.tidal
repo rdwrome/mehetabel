@@ -13,12 +13,12 @@ d9 --cherilyn, donna, ann
   $ euclid 3 8
   $ rarely (slow 2)
   $ randslice 16
-  $ s "donna"
+  $ s "ann"
   # legato 1
   # room 0.2 # size 0.6
-  # gain (range 0.4 0.8 sine)
+  # gain 1.2
   # pan rand
-  -- silence
+  # silence
 hush
 
 xfade 9
@@ -30,4 +30,4 @@ xfade 9
     # legato 1
     # room 0.2 # size 0.6
     # pan rand
-    -- # silence
+    # silence
