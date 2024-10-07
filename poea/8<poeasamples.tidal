@@ -1,6 +1,6 @@
-once $ s "poea" # gain 1.2--train still settled
+once $ s "poea:03" # gain 2--train still settled
 
-d9
+d9 -- donna
 -- $ degradeBy 0.3
   $ euclid 3 8
   $ rarely (slow 2)
@@ -10,3 +10,28 @@ d9
   # room 0.2 # size 0.6
   # gain (range 0.4 0.8 sine)
   # pan rand
+
+  d8
+  $ rarely (hurry 2)
+    $ s "scarlett:1"
+    # legato 1
+    # room 0.2 # size 0.6
+    # pan rand
+    # gain (range 0.4 0.8 sine)
+
+  hush
+
+  d10
+    $ spin 3
+    $ loopAt 8
+    $ s "gb"
+      # gain 0.8
+      -- # silence
+
+  xfade 9
+    $ degradeBy 0.1
+    $ chunk' 3 (slow 2)
+    $ n ("[1 ~ 2 2 ~]" |+ irand 2)
+        # s "monica"
+        # pan rand
+        # silence
